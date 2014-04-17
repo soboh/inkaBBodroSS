@@ -56,6 +56,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
@@ -64,6 +70,12 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\inkaBB_odroSS.AboutBox.resources" />
+    <EmbeddedResource Include="obj\Debug\inkaBB_odroSS.FormMain.resources" />
+    <EmbeddedResource Include="obj\Debug\inkaBB_odroSS.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\inkaBB_odroSS.AboutBox.resources" />
+    <EmbeddedResource Include="obj\Release\inkaBB_odroSS.FormMain.resources" />
+    <EmbeddedResource Include="obj\Release\inkaBB_odroSS.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,6 +85,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="bin\Debug\inkaBB odroSS.exe.config" />
+    <None Include="bin\Debug\inkaBB odroSS.vshost.exe.config" />
+    <None Include="bin\Debug\inkaBB odroSS.vshost.exe.manifest" />
+    <None Include="bin\Release\inkaBB odroSS.exe.config" />
+    <None Include="bin\Release\inkaBB odroSS.vshost.exe.config" />
+    <None Include="bin\Release\inkaBB odroSS.vshost.exe.manifest" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\inkaBB odroSS.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\inkaBB odroSS.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\inkaBB odroSS.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\inkaBB odroSS.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -87,6 +112,24 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\inkaBB odroSS.exe" />
+    <Content Include="bin\Debug\inkaBB odroSS.pdb" />
+    <Content Include="bin\Debug\inkaBB odroSS.vshost.exe" />
+    <Content Include="bin\Release\inkaBB odroSS.exe" />
+    <Content Include="bin\Release\inkaBB odroSS.pdb" />
+    <Content Include="bin\Release\inkaBB odroSS.vshost.exe" />
+    <Content Include="obj\Debug\inkaBB odroSS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\inkaBB odroSS.exe" />
+    <Content Include="obj\Debug\inkaBB odroSS.pdb" />
+    <Content Include="obj\Release\inkaBB odroSS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\inkaBB odroSS.exe" />
+    <Content Include="obj\Release\inkaBB odroSS.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

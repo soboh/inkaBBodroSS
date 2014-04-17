@@ -1,0 +1,10 @@
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\bin\Debug\inkaBB odroSS.exe.config
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB odroSS.csprojResolveAssemblyReference.cache
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB_odroSS.FormMain.resources
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB_odroSS.Properties.Resources.resources
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB odroSS.csproj.GenerateResource.Cache
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\bin\Debug\inkaBB odroSS.exe
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\bin\Debug\inkaBB odroSS.pdb
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB odroSS.exe
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB odroSS.pdb
+C:\Users\ahmads\Desktop\inkaBB odroSS\inkaBB odroSS\obj\Debug\inkaBB_odroSS.AboutBox.resources
