@@ -1,4 +1,4 @@
-inkaBBodroSS
+inkaBB odroSS
 ============
 
 inkaBB odroSS is a windows application aims to help students locking their computers for studies purposes.
