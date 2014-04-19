@@ -175,7 +175,7 @@
             // 
             // timerForegroundWindow
             // 
-            this.timerForegroundWindow.Interval = 3000;
+            this.timerForegroundWindow.Interval = 500;
             this.timerForegroundWindow.Tick += new System.EventHandler(this.timerForegroundWindow_Tick);
             // 
             // listBoxExcludedPrograms

@@ -23,6 +23,20 @@ namespace inkaBB_odroSS
         [DllImport("user32.dll")]
         public static extern int SendMessage(int hWnd, uint Msg, int wParam, int lParam);
 
+        public delegate bool EnumDelegate(IntPtr hWnd, int lParam);
+
+        [DllImport("user32.dll", EntryPoint = "EnumDesktopWindows",
+         ExactSpelling = false, CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool EnumDesktopWindows(IntPtr hDesktop, EnumDelegate lpEnumCallbackFunction, IntPtr lParam);
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowText",
+         ExactSpelling = false, CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpWindowText, int nMaxCount);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool IsWindowVisible(IntPtr hWnd);
+
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_MINIMIZE = 0xF020;
         
@@ -42,25 +56,36 @@ namespace inkaBB_odroSS
             IntPtr fg = GetForegroundWindow();
             IntPtr x = GetWindowCaption(fg, window_title, 256);
             textBox1.Text = window_title.ToString();
-            if (textBox1.Text != "inkaBB odroSS" && !(listBoxIncludedPrograms.Items.Contains(textBox1.Text)))
+            if (textBox1.Text != "inkaBB odroSS" &&
+                textBox1.Text != "Task Switching" &&
+                !(listBoxIncludedPrograms.Items.Contains(textBox1.Text)))
                 SendMessage((int)fg, WM_SYSCOMMAND, SC_MINIMIZE, 0);
 
         }
 
         private void FormMain_Load(object sender, System.EventArgs e)
         {
-            Process[] processList = Process.GetProcesses();
-            foreach (Process process in processList)
+            var collection = new List<string>();
+            FormMain.EnumDelegate filter = delegate(IntPtr hWnd, int lParam)
             {
-                IntPtr handle = process.MainWindowHandle;
-                handle = GetWindowCaption(handle, window_title, 256);
-                string title = window_title.ToString();
-                if (!String.IsNullOrEmpty(title))
+                StringBuilder strbTitle = new StringBuilder(255);
+                int nLength = FormMain.GetWindowText(hWnd, strbTitle, strbTitle.Capacity + 1);
+                string strTitle = strbTitle.ToString();
+
+                if (FormMain.IsWindowVisible(hWnd) && string.IsNullOrEmpty(strTitle) == false)
                 {
-                    listBoxExcludedPrograms.Items.Add(title);
+                    collection.Add(strTitle);
+                }
+                return true;
+            };
+
+            if (FormMain.EnumDesktopWindows(IntPtr.Zero, filter, IntPtr.Zero))
+            {
+                foreach (var item in collection)
+                {
+                    listBoxExcludedPrograms.Items.Add(item);
                 }
             }
-
         }
 
         private void toolStripButtonAbout_Click(object sender, System.EventArgs e)
