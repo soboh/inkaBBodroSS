@@ -51,15 +51,17 @@
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timerUpdateListOfWindows = new System.Windows.Forms.Timer(this.components);
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 292);
+            this.textBox1.Location = new System.Drawing.Point(227, 289);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(315, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Visible = false;
             // 
             // toolStrip
             // 
@@ -120,6 +122,7 @@
             // 
             this.toolStripTextBoxHour.Name = "toolStripTextBoxHour";
             this.toolStripTextBoxHour.Size = new System.Drawing.Size(30, 25);
+            this.toolStripTextBoxHour.Text = "00";
             // 
             // toolStripLabelSep2
             // 
@@ -131,6 +134,7 @@
             // 
             this.toolStripTextBoxMinute.Name = "toolStripTextBoxMinute";
             this.toolStripTextBoxMinute.Size = new System.Drawing.Size(30, 25);
+            this.toolStripTextBoxMinute.Text = "00";
             // 
             // toolStripLabel4
             // 
@@ -142,6 +146,7 @@
             // 
             this.toolStripTextBoxSecond.Name = "toolStripTextBoxSecond";
             this.toolStripTextBoxSecond.Size = new System.Drawing.Size(30, 25);
+            this.toolStripTextBoxSecond.Text = "00";
             // 
             // toolStripLabel1
             // 
@@ -183,7 +188,7 @@
             this.listBoxExcludedPrograms.FormattingEnabled = true;
             this.listBoxExcludedPrograms.Location = new System.Drawing.Point(0, 53);
             this.listBoxExcludedPrograms.Name = "listBoxExcludedPrograms";
-            this.listBoxExcludedPrograms.Size = new System.Drawing.Size(304, 212);
+            this.listBoxExcludedPrograms.Size = new System.Drawing.Size(304, 264);
             this.listBoxExcludedPrograms.TabIndex = 3;
             this.listBoxExcludedPrograms.SelectedIndexChanged += new System.EventHandler(this.listBoxExcludedPrograms_SelectedIndexChanged);
             // 
@@ -192,12 +197,13 @@
             this.listBoxIncludedPrograms.FormattingEnabled = true;
             this.listBoxIncludedPrograms.Location = new System.Drawing.Point(310, 53);
             this.listBoxIncludedPrograms.Name = "listBoxIncludedPrograms";
-            this.listBoxIncludedPrograms.Size = new System.Drawing.Size(304, 212);
+            this.listBoxIncludedPrograms.Size = new System.Drawing.Size(304, 264);
             this.listBoxIncludedPrograms.TabIndex = 4;
             this.listBoxIncludedPrograms.SelectedIndexChanged += new System.EventHandler(this.listBoxIncludedPrograms_SelectedIndexChanged);
             // 
             // timerMain
             // 
+            this.timerMain.Interval = 1000;
             this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
             // label1
@@ -205,9 +211,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(-3, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Opened windows:";
+            this.label1.Text = "List of windows:";
             // 
             // label2
             // 
@@ -218,12 +224,18 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Allowed windows:";
             // 
+            // timerUpdateListOfWindows
+            // 
+            this.timerUpdateListOfWindows.Enabled = true;
+            this.timerUpdateListOfWindows.Interval = 60000;
+            this.timerUpdateListOfWindows.Tick += new System.EventHandler(this.timerUpdateListOfWindows_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(616, 354);
+            this.ClientSize = new System.Drawing.Size(616, 321);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxIncludedPrograms);
@@ -265,6 +277,7 @@
         private System.Windows.Forms.Timer timerMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timerUpdateListOfWindows;
     }
 }
 

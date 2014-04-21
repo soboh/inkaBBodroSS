@@ -57,14 +57,15 @@ namespace inkaBB_odroSS
             IntPtr x = GetWindowCaption(fg, window_title, 256);
             textBox1.Text = window_title.ToString();
             if (textBox1.Text != "inkaBB odroSS" &&
-                textBox1.Text != "Task Switching" &&
-                !(listBoxIncludedPrograms.Items.Contains(textBox1.Text)))
+                !(listBoxIncludedPrograms.Items.Contains(textBox1.Text)) &&
+                (listBoxExcludedPrograms.Items.Contains(textBox1.Text)))
                 SendMessage((int)fg, WM_SYSCOMMAND, SC_MINIMIZE, 0);
 
         }
 
-        private void FormMain_Load(object sender, System.EventArgs e)
+        private void updateListOfOpenedWindows()
         {
+            listBoxExcludedPrograms.Items.Clear();
             var collection = new List<string>();
             FormMain.EnumDelegate filter = delegate(IntPtr hWnd, int lParam)
             {
@@ -83,9 +84,17 @@ namespace inkaBB_odroSS
             {
                 foreach (var item in collection)
                 {
-                    listBoxExcludedPrograms.Items.Add(item);
+                    if (!listBoxIncludedPrograms.Items.Contains(item))
+                    {
+                        listBoxExcludedPrograms.Items.Add(item);
+                    }
                 }
             }
+        }
+
+        private void FormMain_Load(object sender, System.EventArgs e)
+        {
+            updateListOfOpenedWindows();
         }
 
         private void toolStripButtonAbout_Click(object sender, System.EventArgs e)
@@ -137,6 +146,11 @@ namespace inkaBB_odroSS
                 return;
             listBoxExcludedPrograms.Items.Add(listBoxIncludedPrograms.Items[listBoxIncludedPrograms.SelectedIndex]);
             listBoxIncludedPrograms.Items.RemoveAt(listBoxIncludedPrograms.SelectedIndex);
+        }
+
+        private void timerUpdateListOfWindows_Tick(object sender, EventArgs e)
+        {
+            updateListOfOpenedWindows();
         }
 
         
