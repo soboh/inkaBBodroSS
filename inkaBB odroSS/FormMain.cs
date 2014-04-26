@@ -14,10 +14,10 @@ namespace inkaBB_odroSS
 {
     public partial class FormMain : Form
     {
-        [DllImport("user32.dll", CharSet=CharSet.Auto, SetLastError=true)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern IntPtr GetForegroundWindow();
 
-        [DllImport("user32.dll", EntryPoint="GetWindowText",CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", EntryPoint = "GetWindowText", CharSet = CharSet.Auto)]
         public static extern IntPtr GetWindowCaption(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         [DllImport("user32.dll")]
@@ -39,9 +39,9 @@ namespace inkaBB_odroSS
 
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_MINIMIZE = 0xF020;
-        
+
         StringBuilder window_title = new StringBuilder(256 + 1);
-        
+
 
 
         public FormMain()
@@ -56,7 +56,7 @@ namespace inkaBB_odroSS
             IntPtr fg = GetForegroundWindow();
             IntPtr x = GetWindowCaption(fg, window_title, 256);
             textBox1.Text = window_title.ToString();
-            if (textBox1.Text != "inkaBB odroSS" &&
+            if (/*textBox1.Text != "inkaBB odroSS" &&*/
                 !(listBoxIncludedPrograms.Items.Contains(textBox1.Text)) &&
                 (listBoxExcludedPrograms.Items.Contains(textBox1.Text)))
                 SendMessage((int)fg, WM_SYSCOMMAND, SC_MINIMIZE, 0);
@@ -106,7 +106,10 @@ namespace inkaBB_odroSS
         private void timerMain_Tick(object sender, System.EventArgs e)
         {
             timerForegroundWindow.Enabled = false;
+            toolStripButtonStart.Enabled = true;
             timerMain.Enabled = false;
+            listBoxExcludedPrograms.Enabled = true;
+            listBoxIncludedPrograms.Enabled = true;
         }
 
         private void toolStripButtonStart_Click(object sender, System.EventArgs e)
@@ -117,7 +120,11 @@ namespace inkaBB_odroSS
             timerMain.Interval = (hours * 60 * 60 + minutes * 60 + seconds) * 1000;
             timerMain.Enabled = true;
             timerForegroundWindow.Enabled = true;
-
+            toolStripButtonStart.Enabled = false;
+            listBoxExcludedPrograms.Enabled = false;
+            listBoxIncludedPrograms.Enabled = false;
+            toolStripButtonRight.Enabled = false;
+            toolStripButtonLeft.Enabled = false;
         }
 
         private void toolStripButtonRight_Click(object sender, EventArgs e)
@@ -153,6 +160,14 @@ namespace inkaBB_odroSS
             updateListOfOpenedWindows();
         }
 
-        
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (timerMain.Enabled == true)
+            {
+                e.Cancel = true;
+            }
+        }
+
+
     }
 }
